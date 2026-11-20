@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import './styles.css'
 
@@ -22,22 +22,48 @@ function NavLinks({ onSelect }) {
 }
 
 function Header() {
-  return <header className="relative z-10 border-b border-line bg-cream">
+  const [hidden, setHidden] = useState(false)
+  const mobileMenu = useRef(null)
+
+  useEffect(() => {
+    let previousY = Math.max(0, window.scrollY)
+
+    function handleScroll() {
+      const currentY = Math.max(0, window.scrollY)
+
+      if (currentY <= 56 || currentY < previousY) {
+        setHidden(false)
+      } else if (currentY > previousY) {
+        setHidden(true)
+        mobileMenu.current.open = false
+      }
+
+      previousY = currentY
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  return <header data-hidden={hidden} className="sticky top-0 z-10 border-b border-line bg-cream motion-safe:transition-transform data-[hidden=true]:-translate-y-full has-[:focus-visible]:translate-y-0">
     <div className="wrap flex min-h-14 items-center gap-3 sm:gap-6">
       <a href="#home" className="mr-auto flex items-center gap-2.5" aria-label="Kopi Hauz home">
         <img src="/kopi-hauz.png" width="34" height="34" alt="" />
         <span className="font-display text-lg sm:text-xl">Kopi Hauz</span>
       </a>
       <nav aria-label="Main navigation" className="hidden items-center gap-6 text-sm font-semibold lg:flex"><NavLinks /></nav>
-      <details className="mobile-nav lg:hidden">
+      <div className="hidden shrink-0 md:block">
+        <External href={directions} className="button button-teal">Get Directions</External>
+      </div>
+      <details ref={mobileMenu} className="mobile-nav lg:hidden">
         <summary aria-label="Navigation menu" className="grid size-11 cursor-pointer place-items-center rounded-full border border-line">
           <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18" /></svg>
         </summary>
-        <nav aria-label="Mobile navigation" className="absolute inset-x-0 top-full grid border-b border-line bg-cream px-5 py-3 shadow-lg">
-          <NavLinks onSelect={event => { event.currentTarget.closest('details').open = false }} />
+        <nav aria-label="Mobile navigation" className="absolute inset-x-0 top-full grid max-h-[calc(100dvh-3.5rem)] overflow-y-auto border-b border-line bg-cream px-5 py-3 shadow-lg">
+          <NavLinks onSelect={() => { mobileMenu.current.open = false }} />
+          <External href={directions} className="font-semibold md:hidden">Get Directions</External>
         </nav>
       </details>
-      <External href={directions} className="button button-teal shrink-0 max-sm:px-3 max-sm:text-xs">Get Directions</External>
     </div>
   </header>
 }
@@ -75,7 +101,7 @@ function App() {
   return <>
     <a href="#main" className="sr-only focus:not-sr-only">Skip to content</a>
     <Header />
-    <main id="main">
+    <main id="main" className="scroll-mt-15 [&>section]:scroll-mt-15">
       <section id="home" className="hero relative overflow-hidden text-cream">
         <svg aria-hidden="true" className="absolute size-0"><defs><clipPath id="hero-photo-clip" clipPathUnits="objectBoundingBox"><path d="M .4 0 H 1 V 1 H 0 C .16 .84 .18 .72 .2 .62 C .25 .4 .28 .22 .4 0 Z" /></clipPath></defs></svg>
         <div className="wrap relative z-[1] grid items-center gap-10 py-14 sm:py-20 lg:min-h-[min(74vh,720px)] lg:grid-cols-[1.05fr_0.95fr] lg:py-24">
