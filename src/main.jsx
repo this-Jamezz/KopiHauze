@@ -133,6 +133,7 @@ function App() {
     <footer className="bg-dark text-cream"><div className="wrap flex flex-wrap items-center justify-between gap-6 py-8">
       <a href="#home" className="flex items-center gap-3"><img src="/kopi-hauz.png" width="42" height="42" alt="" /><span className="font-display text-2xl">Kopi Hauz</span></a>
       <div className="flex flex-wrap gap-5 text-sm"><External href={facebook}>Facebook</External><External href={instagram}>Instagram</External><a href={phone}>{phoneLabel}</a></div>
+      <p className="text-sm">Developed by James Ian Antonio and Miranda Lheriza</p>
     </div></footer>
   </>
 }

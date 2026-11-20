@@ -200,6 +200,7 @@ function FullMenu() {
       <div className="wrap flex flex-wrap items-center justify-between gap-4 py-7">
         <a href="/" className="font-display text-xl">Kopi Hauz</a>
         <p className="text-sm">Questions? Call <a href="tel:+639270656137" className="underline underline-offset-4">0927 065 6137</a></p>
+        <p className="text-sm">Developed by James Ian Antonio and Miranda Lheriza</p>
       </div>
     </footer>
   </>
