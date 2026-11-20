@@ -4,13 +4,13 @@
 @theme {
   --font-sans: 'DM Sans', system-ui, sans-serif;
   --font-display: 'Playfair Display', Georgia, serif;
-  --color-teal: #103b36;
-  --color-dark: #092e2a;
-  --color-cream: #faf5e9;
-  --color-paper: #fffdf7;
-  --color-gold: #dfbd82;
-  --color-line: #dfd4bf;
-  --color-muted: #49615a;
+  --color-teal: #075e62;
+  --color-dark: #06464b;
+  --color-cream: #f6f5e8;
+  --color-paper: #fffdf4;
+  --color-gold: #ded79a;
+  --color-line: #d5dfd9;
+  --color-muted: #496a68;
 }
 
 html { scroll-behavior: smooth; }
@@ -20,17 +20,25 @@ h2 { @apply font-display text-4xl leading-tight tracking-tight sm:text-5xl; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 .wrap { @apply mx-auto w-full max-w-7xl px-5 sm:px-9 lg:px-14; }
 .section { @apply py-14 sm:py-20; }
-.hero { background: radial-gradient(ellipse at 82% 45%, #1a554a, #103b36 60%); }
-.brand-arch { border: 1px solid #dfbd8280; border-radius: 50% 50% 1.25rem 1.25rem; background: #ffffff08; }
+.hero { background-color: #06464b; background-image: repeating-linear-gradient(90deg, transparent 0 12px, #ffffff0a 12px 15px, transparent 15px 27px), radial-gradient(ellipse at 36% 45%, #0d7780, #07565c 70%, #06464b); }
+.hero-photo { position: relative; height: 260px; overflow: hidden; }
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 58%; }
+@media (min-width: 1024px) {
+  .hero-photo { position: absolute; inset: 0 0 0 auto; width: 56%; height: auto; clip-path: url(#hero-photo-clip); }
+}
+.brand-arch { border: 1px solid #ded79a80; border-radius: 50% 50% 1.25rem 1.25rem; background: #0b737a30; }
 .eyebrow { @apply text-sm font-semibold uppercase tracking-[.18em]; }
 .button { @apply inline-flex min-h-11 items-center justify-center rounded-full px-5 py-2.5 text-sm font-bold transition-colors; }
 .button-teal { @apply bg-teal text-cream hover:bg-dark; }
 .button-gold { @apply bg-gold text-dark hover:bg-cream; }
+.button-menu { @apply bg-gold text-dark hover:bg-teal hover:text-cream; }
 .button-outline { @apply border border-gold/65 text-cream hover:bg-white/10; }
 .text-link { @apply font-semibold underline decoration-current/50 underline-offset-4 hover:decoration-current; }
 .mobile-nav summary, .faq-question { list-style: none; }
 .mobile-nav summary::-webkit-details-marker, .faq-question::-webkit-details-marker { display: none; }
 .mobile-nav nav a { @apply rounded-lg px-3 py-3 hover:bg-line/40; }
+.category-tab { @apply rounded-full px-4 py-2 transition-colors hover:bg-teal/10; }
+.category-tab-active { @apply bg-teal text-cream hover:bg-teal; }
 .faq-question::after { content: '+' / ""; flex: none; font-size: 1.35rem; font-weight: 400; }
 details[open] > .faq-question::after { content: '−' / ""; }
 
