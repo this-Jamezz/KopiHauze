@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-display: 'Playfair Display', Georgia, serif;
+  --color-teal: #103b36;
+  --color-dark: #092e2a;
+  --color-cream: #faf5e9;
+  --color-paper: #fffdf7;
+  --color-gold: #dfbd82;
+  --color-line: #dfd4bf;
+  --color-muted: #49615a;
+}
+
+html { scroll-behavior: smooth; }
+body { @apply bg-cream font-sans text-teal antialiased; }
+h2 { @apply font-display text-4xl leading-tight tracking-tight sm:text-5xl; }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+.wrap { @apply mx-auto w-full max-w-7xl px-5 sm:px-9 lg:px-14; }
+.section { @apply py-14 sm:py-20; }
+.hero { background: radial-gradient(ellipse at 82% 45%, #1a554a, #103b36 60%); }
+.brand-arch { border: 1px solid #dfbd8280; border-radius: 50% 50% 1.25rem 1.25rem; background: #ffffff08; }
+.eyebrow { @apply text-sm font-semibold uppercase tracking-[.18em]; }
+.button { @apply inline-flex min-h-11 items-center justify-center rounded-full px-5 py-2.5 text-sm font-bold transition-colors; }
+.button-teal { @apply bg-teal text-cream hover:bg-dark; }
+.button-gold { @apply bg-gold text-dark hover:bg-cream; }
+.button-outline { @apply border border-gold/65 text-cream hover:bg-white/10; }
+.text-link { @apply font-semibold underline decoration-current/50 underline-offset-4 hover:decoration-current; }
+.mobile-nav summary, .faq-question { list-style: none; }
+.mobile-nav summary::-webkit-details-marker, .faq-question::-webkit-details-marker { display: none; }
+.mobile-nav nav a { @apply rounded-lg px-3 py-3 hover:bg-line/40; }
+.faq-question::after { content: '+' / ""; flex: none; font-size: 1.35rem; font-weight: 400; }
+details[open] > .faq-question::after { content: '−' / ""; }
+
+

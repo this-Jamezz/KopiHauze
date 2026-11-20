@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+<title id="title">Kopi Hauz — Coffee + Waffle</title>
+<circle cx="256" cy="256" r="250" fill="#075851"/>
+<circle cx="256" cy="256" r="228" fill="none" stroke="#DFBD82" stroke-width="3"/>
+<g fill="none" stroke="#FFF5DD" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+<path d="M208 146h85v7a42.5 42.5 0 0 1-85 0v-7Z"/>
+<path d="M293 151h10a14 14 0 0 1 0 28h-17m-91 26h111"/>
+<path d="M238 131c-17-15 16-21 7-38m19 38c-17-15 16-21 7-38"/>
+</g>
+<g fill="#FFF5DD" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-weight="700">
+<text x="253" y="298" font-size="108" letter-spacing="-5">kopi</text>
+<text x="253" y="393" font-size="108" letter-spacing="-5">hauz</text>
+</g>
+<text x="256" y="434" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="700" letter-spacing="4" fill="#E8C88E">COFFEE + WAFFLE</text>
+</svg>
